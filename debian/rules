@@ -88,8 +88,8 @@ override_dh_strip:
 override_dh_auto_test:
 
 
-override_dh_installinit:
-	dh_installinit --name=docker
+#override_dh_installinit:
+#	dh_installinit --name=docker
 
 
 override_dh_installudev:
