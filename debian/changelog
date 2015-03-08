@@ -1,3 +1,12 @@
+docker.io (1.5.0~linden-1) UNRELEASED; urgency=low
+
+  * Update to 1.5.0 linden build
+  * Patch: 9922-private-registry-search-401
+  * Patch: gid-workaround
+  * Patch: 8326-force-fully-qualified
+
+ -- Don Kjer <don@lindenlab.com>  Sun, 08 Mar 2015 21:31:15 +0000
+
 docker.io (1.5.0~dfsg1-1) UNRELEASED; urgency=low
 
   * Update to 1.5.0 upstream release (Closes: #773495)

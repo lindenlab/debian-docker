@@ -32,7 +32,7 @@ done
 
 dfsgfilename="$filename"
 if [[ "$dfsgfilename" != *dfsg* ]]; then
-	dfsgfilename="${dfsgfilename/.orig/~dfsg1.orig}"
+	dfsgfilename="${dfsgfilename/.orig/~linden.orig}"
 fi
 tar -czf ${dir}/${dfsgfilename} *
 cd "$dir"

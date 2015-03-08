@@ -1,11 +1,11 @@
-FROM tianon/debian-devel
+FROM registry.docker/build/debian-devel
 
 # TODO remove these once they're reviewed and uploaded to the archive
 RUN /tianon/install-source-package.sh golang-fsnotify pkg-go/packages/golang-fsnotify.git
 RUN /tianon/install-source-package.sh golang-logrus pkg-go/packages/golang-logrus.git
 
 # since we're uploading to experimental, let's build with deps from it too
-RUN echo 'APT::Default-Release "experimental";' > /etc/apt/apt.conf.d/default
+#RUN echo 'APT::Default-Release "experimental";' > /etc/apt/apt.conf.d/default
 
 # start by adding just "debian/control" so we can get mk-build-deps with maximum caching
 COPY control /usr/src/docker.io/debian/

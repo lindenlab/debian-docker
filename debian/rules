@@ -47,8 +47,10 @@ override_dh_auto_build:
 	@mkdir -p "$$GOPATH/src/$(dir $(LIBCONTAINER_GOPKG))" "$$GOPATH/src/$(dir $(LIBTRUST_GOPKG))"
 	ln -sf "$$(readlink -f libcontainer)" "$(GOPATH)/src/$(dir $(LIBCONTAINER_GOPKG))"
 	ln -sf "$$(readlink -f libtrust)" "$(GOPATH)/src/$(dir $(LIBTRUST_GOPKG))"
+	rm -rf "$(GOPATH)/src/github.com/docker/docker/autogen"
+	ln -sf "$(CURDIR)/autogen" "$(GOPATH)/src/github.com/docker/docker/autogen"
 	
-	./hack/make.sh dynbinary
+	./project/make.sh dynbinary
 	
 	# compile man pages
 	./docs/man/md2man-all.sh
@@ -59,11 +61,11 @@ override_dh_auto_install:
 	
 	# install docker binary
 	mkdir -p debian/docker.io/usr/bin
-	mv bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/docker.io/usr/bin/docker
+	cp bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/docker.io/usr/bin/docker
 	
 	# install dockerinit binary
 	mkdir -p debian/docker.io/${INITDIR}
-	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/${INITPATH}
+	cp bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/${INITPATH}
 	
 	# Most of the source of docker does not make a library,
 	#   so only ship the reusable parts (and in a separate package).
@@ -110,9 +112,9 @@ override_dh_installudev:
 
 
 override_dh_auto_clean:
-	# bundles is created by hack/make.sh
+	# bundles is created by project/make.sh
 	# docs/man/man*/ is created by docs/man/md2man-all.sh
-	rm -rf bundles docs/man/man*/
+	rm -rf bundles autogen docs/man/man*/
 
 
 %:
