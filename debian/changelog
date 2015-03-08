@@ -78,6 +78,19 @@ docker.io (1.6.0~rc4~dfsg1-1) experimental; urgency=low
 
  -- Tianon Gravi <admwiggin@gmail.com>  Mon, 06 Apr 2015 17:11:33 -0600
 
+docker.io (1.5.0~linden-7) experimental; urgency=low
+
+  * Update to 1.5.0 rc4 linden build
+  * Patch: 9922-private-registry-search-401
+  * Patch: gid-workaround
+  * Patch: 8326-force-fully-qualified
+  * Patch: dns-port-publish
+  * Patch: adding interface lookup support
+  * Patch: Moving portspec lookups to daemon
+  * Patch: Adding support for --publish-hostname
+
+ -- Don Kjer <don@lindenlab.com>  Mon, 23 Mar 2015 22:16:28 +0000
+
 docker.io (1.5.0~dfsg1-1) experimental; urgency=low
 
   * Update to 1.5.0 upstream release (Closes: #773495)
