@@ -8,13 +8,18 @@ MULTI_ORIG_GOPKGS = \
 	github.com/docker/libcontainer \
 	github.com/docker/libnetwork \
 	github.com/docker/libtrust \
+	github.com/docker/libnetwork \
+	github.com/vishvananda/netns \
+	github.com/vishvananda/netlink \
+	github.com/mistifyio/go-zfs \
 	github.com/docker/distribution
 
 # the list of Go packages to include in golang-docker-dev
 DEV_GOPKGS = \
 	github.com/docker/docker/autogen/dockerversion \
 	github.com/docker/docker/pkg \
-	github.com/docker/libcontainer
+	github.com/docker/libcontainer \
+	github.com/docker/libnetwork
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 export GOPATH = $(CURDIR)/.gopath
@@ -68,7 +73,7 @@ override_dh_auto_build:
 	./hack/make.sh dynbinary
 	
 	# compile man pages
-	./docs/man/md2man-all.sh -q
+	./man/md2man-all.sh -q
 
 
 override_dh_auto_install:
@@ -97,8 +102,8 @@ override_dh_strip:
 override_dh_auto_test:
 
 
-override_dh_installinit:
-	dh_installinit --name=docker --no-restart-on-upgrade
+#override_dh_installinit:
+#	dh_installinit --name=docker --no-restart-on-upgrade
 
 
 override_dh_installudev:

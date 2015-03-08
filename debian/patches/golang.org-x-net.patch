@@ -1,32 +1,25 @@
-Author: Tibor Vass <tibor@docker.com>, Tianon Gravi <admwiggin@gmail.com>
-Description: replace "code.google.com/p/go.net" with the canonical "golang.org/x/net"
-Applied-Upstream: https://github.com/docker/docker/pull/13972 (Docker 1.8+)
-
-Index: docker.io/api/server/server.go
-===================================================================
---- docker.io.orig/api/server/server.go
-+++ docker.io/api/server/server.go
-@@ -20,9 +20,9 @@ import (
- 	"crypto/tls"
- 	"crypto/x509"
+diff -Naur a/api/server/server.go b/api/server/server.go
+--- a/api/server/server.go	2015-07-13 20:20:51.381381716 +0000
++++ b/api/server/server.go	2015-07-13 20:21:56.733389316 +0000
+@@ -13,8 +13,8 @@
+ 	"strings"
+ 	"time"
  
 -	"code.google.com/p/go.net/websocket"
- 	"github.com/docker/libcontainer/user"
  	"github.com/gorilla/mux"
 +	"golang.org/x/net/websocket"
  
- 	log "github.com/Sirupsen/logrus"
+ 	"github.com/Sirupsen/logrus"
  	"github.com/docker/docker/api"
-Index: docker.io/integration-cli/docker_api_attach_test.go
-===================================================================
---- docker.io.orig/integration-cli/docker_api_attach_test.go
-+++ docker.io/integration-cli/docker_api_attach_test.go
-@@ -6,7 +6,7 @@ import (
- 	"testing"
- 	"time"
+diff -Naur a/integration-cli/docker_api_attach_test.go b/integration-cli/docker_api_attach_test.go
+--- a/integration-cli/docker_api_attach_test.go	2015-07-13 20:20:51.381381716 +0000
++++ b/integration-cli/docker_api_attach_test.go	2015-07-13 20:22:32.721393433 +0000
+@@ -9,7 +9,7 @@
+ 
+ 	"github.com/go-check/check"
  
 -	"code.google.com/p/go.net/websocket"
 +	"golang.org/x/net/websocket"
  )
  
- func TestGetContainersAttachWebsocket(t *testing.T) {
+ func (s *DockerSuite) TestGetContainersAttachWebsocket(c *check.C) {

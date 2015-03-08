@@ -1,3 +1,27 @@
+docker.io (1.8.1~linden1) unstable; urgency=medium
+
+  * Updating to 1.8.1
+
+ -- Don Kjer <don@lindenlab.com>  Mon, 10 Aug 2015 21:19:00 +0000
+
+docker.io (1.7.1~linden3) unstable; urgency=medium
+
+  * Updating to 1.7.1-rc3
+
+ -- Don Kjer <don@lindenlab.com>  Mon, 13 Jul 2015 19:11:06 +0000
+
+docker.io (1.7.1~linden2) unstable; urgency=medium
+
+  * Applying single-tag pull patch.
+
+ -- Don Kjer <don@lindenlab.com>  Fri, 10 Jul 2015 01:21:13 +0000
+
+docker.io (1.7.1~linden1) unstable; urgency=medium
+
+  * Updating to 1.7.1-rc1
+
+ -- Don Kjer <don@lindenlab.com>  Tue, 07 Jul 2015 21:47:56 +0000
+
 docker.io (1.6.2~dfsg1-2) unstable; urgency=medium
 
   * Add DEP8 tests
@@ -77,6 +101,19 @@ docker.io (1.6.0~rc4~dfsg1-1) experimental; urgency=low
   * Add Built-Using for glibc (Closes: #769351).
 
  -- Tianon Gravi <admwiggin@gmail.com>  Mon, 06 Apr 2015 17:11:33 -0600
+
+docker.io (1.5.0~linden-7) experimental; urgency=low
+
+  * Update to 1.5.0 rc4 linden build
+  * Patch: 9922-private-registry-search-401
+  * Patch: gid-workaround
+  * Patch: 8326-force-fully-qualified
+  * Patch: dns-port-publish
+  * Patch: adding interface lookup support
+  * Patch: Moving portspec lookups to daemon
+  * Patch: Adding support for --publish-hostname
+
+ -- Don Kjer <don@lindenlab.com>  Mon, 23 Mar 2015 22:16:28 +0000
 
 docker.io (1.5.0~dfsg1-1) experimental; urgency=low
 

@@ -8,7 +8,11 @@ multiOrigGopkgs=(
 	github.com/docker/libcontainer
 	github.com/docker/libnetwork
 	github.com/docker/libtrust
+	github.com/docker/libnetwork
 	github.com/docker/distribution
+	github.com/vishvananda/netns
+	github.com/vishvananda/netlink
+	github.com/mistifyio/go-zfs
 )
 
 pkg="$(dpkg-parsechangelog -SSource)"
@@ -32,7 +36,9 @@ get_hack_vendor() {
 	for path in hack/vendor.sh project/vendor.sh; do
 		if [ -e "${origTarballPrefix}.tar.gz" ]; then
 			# if we have the main orig tarball handy, let's prefer that
-			if tar -xzOf "${origTarballPrefix}.tar.gz" --wildcards '*/'"$path"; then
+			if tar -xzOf "${origTarballPrefix}.tar.gz" --wildcards '*/'"$path" > /tmp/vendor.sh; then
+				( HERE=$(pwd); cd /tmp; patch -p2 < $HERE/debian/patches/linden-vendoring.patch )
+				cat /tmp/vendor.sh
 				return
 			fi
 		else
@@ -46,13 +52,14 @@ get_hack_vendor() {
 
 ret=0
 for gopkg in "${multiOrigGopkgs[@]}"; do
-	commit="$(get_hack_vendor | awk '$1 == "clone" && $2 == "git" && $3 == "'"$gopkg"'" { print $4 }')"
+	commit="$(get_hack_vendor | awk '$1 == "clone" && $2 == "git" && ( $3 == "'"$gopkg"'" || $5 == "'"$gopkg"'" ) { print $4 }')"
+	gorepo="$(get_hack_vendor | awk '$1 == "clone" && $2 == "git" && ( $3 == "'"$gopkg"'" || $5 == "'"$gopkg"'" ) { print $3 }')"
 	if [ "$commit" ]; then
 		origTar="$unprunedTarballPrefix-$(basename "$gopkg").tar.gz"
-		$curl "https://$gopkg/archive/$commit.tar.gz" > "$origTar"
+		$curl "https://$gorepo/archive/$commit.tar.gz" > "$origTar"
 
 		echo "successfully fetched $origTar"
-		echo "  (from $gopkg commit $commit)"
+		echo "  (from $gorepo commit $commit)"
 
 		"$(dirname "$(readlink -f "$BASH_SOURCE")")/../repack.sh" --upstream-version "$upstreamVer" "$origTar"
 	else
