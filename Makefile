@@ -8,9 +8,7 @@ listpackages:
 mangle:
 
 dockerdev:
-	docker pull registry.docker/build/debian-devel
 	docker build -f debian/Dockerfile.devel -t registry.docker/build/debian-devel debian
-	docker push registry.docker/build/debian-devel
 
 dockerbuild: dockerdev
 	docker build -t registry.docker/build/debian-docker debian

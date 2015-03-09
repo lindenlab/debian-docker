@@ -31,7 +31,7 @@ cat "$dir"/debian/repack/prune/* | while read file; do
 done
 
 dfsgfilename="$filename"
-if [[ "$dfsgfilename" != *dfsg* ]]; then
+if [[ "$dfsgfilename" != *linden* ]]; then
 	dfsgfilename="${dfsgfilename/.orig/~linden.orig}"
 fi
 tar -czf ${dir}/${dfsgfilename} *
