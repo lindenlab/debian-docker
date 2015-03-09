@@ -3,7 +3,9 @@
 all:
 
 listpackages:
-	@find packages/ -name "*deb" | sed -e 's_^packages/__' -e 's/_.*//'
+	@dh_listpackages
+	@echo golang-logrus-dev
+	@echo golang-fsnotify-dev
 
 mangle:
 
