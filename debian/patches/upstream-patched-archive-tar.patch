@@ -1,0 +1,198 @@
+--- a/graph/tags_unit_test.go
++++ b/graph/tags_unit_test.go
+@@ -11,7 +11,7 @@
+ 	_ "github.com/docker/docker/daemon/graphdriver/vfs" // import the vfs driver so it is used in the tests
+ 	"github.com/docker/docker/image"
+ 	"github.com/docker/docker/utils"
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ const (
+--- a/integration/api_test.go
++++ b/integration/api_test.go
+@@ -19,7 +19,7 @@
+ 	"github.com/docker/docker/builder"
+ 	"github.com/docker/docker/engine"
+ 	"github.com/docker/docker/runconfig"
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ func TestSaveImageAndThenLoad(t *testing.T) {
+--- a/integration/utils_test.go
++++ b/integration/utils_test.go
+@@ -14,7 +14,7 @@
+ 	"testing"
+ 	"time"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ 
+ 	"github.com/docker/docker/builtins"
+ 	"github.com/docker/docker/daemon"
+--- a/integration-cli/docker_api_containers_test.go
++++ b/integration-cli/docker_api_containers_test.go
+@@ -10,7 +10,7 @@
+ 	"time"
+ 
+ 	"github.com/docker/docker/api/types"
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ func TestContainerApiGetAll(t *testing.T) {
+--- a/integration-cli/docker_cli_push_test.go
++++ b/integration-cli/docker_cli_push_test.go
+@@ -9,7 +9,7 @@
+ 	"testing"
+ 	"time"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ // pulling an image from the central registry should work
+--- a/integration-cli/utils.go
++++ b/integration-cli/utils.go
+@@ -17,7 +17,7 @@
+ 	"syscall"
+ 	"time"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ func getExitCode(err error) (int, error) {
+--- a/pkg/archive/archive.go
++++ b/pkg/archive/archive.go
+@@ -16,7 +16,7 @@
+ 	"strings"
+ 	"syscall"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ 
+ 	log "github.com/Sirupsen/logrus"
+ 	"github.com/docker/docker/pkg/fileutils"
+--- a/pkg/archive/archive_test.go
++++ b/pkg/archive/archive_test.go
+@@ -14,7 +14,7 @@
+ 	"testing"
+ 	"time"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ func TestCmdStreamLargeStderr(t *testing.T) {
+--- a/pkg/archive/archive_unix.go
++++ b/pkg/archive/archive_unix.go
+@@ -7,7 +7,7 @@
+ 	"os"
+ 	"syscall"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ // canonicalTarNameForPath returns platform-specific filepath
+--- a/pkg/archive/archive_windows.go
++++ b/pkg/archive/archive_windows.go
+@@ -7,7 +7,7 @@
+ 	"os"
+ 	"strings"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ // canonicalTarNameForPath returns platform-specific filepath
+--- a/pkg/archive/changes.go
++++ b/pkg/archive/changes.go
+@@ -11,7 +11,7 @@
+ 	"syscall"
+ 	"time"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ 
+ 	log "github.com/Sirupsen/logrus"
+ 	"github.com/docker/docker/pkg/pools"
+--- a/pkg/archive/diff.go
++++ b/pkg/archive/diff.go
+@@ -9,7 +9,7 @@
+ 	"strings"
+ 	"syscall"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ 
+ 	"github.com/docker/docker/pkg/pools"
+ 	"github.com/docker/docker/pkg/system"
+--- a/pkg/archive/diff_test.go
++++ b/pkg/archive/diff_test.go
+@@ -3,7 +3,7 @@
+ import (
+ 	"testing"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ func TestApplyLayerInvalidFilenames(t *testing.T) {
+--- a/pkg/archive/utils_test.go
++++ b/pkg/archive/utils_test.go
+@@ -9,7 +9,7 @@
+ 	"path/filepath"
+ 	"time"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ var testUntarFns = map[string]func(string, io.Reader) error{
+--- a/pkg/archive/wrap.go
++++ b/pkg/archive/wrap.go
+@@ -2,7 +2,7 @@
+ 
+ import (
+ 	"bytes"
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ 	"io/ioutil"
+ )
+ 
+--- a/pkg/tarsum/tarsum.go
++++ b/pkg/tarsum/tarsum.go
+@@ -12,7 +12,7 @@
+ 	"io"
+ 	"strings"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ const (
+--- a/pkg/tarsum/tarsum_test.go
++++ b/pkg/tarsum/tarsum_test.go
+@@ -15,7 +15,7 @@
+ 	"os"
+ 	"testing"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ type testLayer struct {
+--- a/pkg/tarsum/versioning.go
++++ b/pkg/tarsum/versioning.go
+@@ -6,7 +6,7 @@
+ 	"strconv"
+ 	"strings"
+ 
+-	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
++	"archive/tar"
+ )
+ 
+ // versioning of the TarSum algorithm
