@@ -5,6 +5,8 @@ all:
 listpackages:
 	@find packages/ -name "*deb" | sed -e 's_^packages/__' -e 's/_.*//'
 
+mangle:
+
 dockerdev:
 	docker pull registry.docker/build/debian-devel
 	docker build -f debian/Dockerfile.devel -t registry.docker/build/debian-devel debian
