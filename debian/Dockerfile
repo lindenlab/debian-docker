@@ -17,8 +17,5 @@ RUN apt-get update && mk-build-deps -irt'apt-get --no-install-recommends -yV' de
 # need our debian/ directory to compile _this_ package
 COPY . /usr/src/docker.io/debian
 
-# go download and unpack our upstream source
-RUN DOCKER_TARBALLS=.. ./debian/helpers/download-libcontainer
-
 # tianon is _really_ lazy, and likes a preseeded bash history
-RUN echo 'uscan --force-download --verbose --download-current-version  && /tianon/extract-origtargz.sh && dpkg-buildpackage -us -uc && lintian -EvIL+pedantic' >> /root/.bash_history
+RUN echo 'uscan --force-download --verbose --download-current-version && DOCKER_TARBALLS=.. ./debian/helpers/download-libcontainer && /tianon/extract-origtargz.sh && dpkg-buildpackage -us -uc && lintian -EvIL+pedantic' >> /root/.bash_history

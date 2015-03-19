@@ -53,3 +53,13 @@ if libtrustCommit="$(get_hack_vendor | grep -m1 '^clone git github.com/docker/li
 
 	"$(dirname "$(readlink -f "$BASH_SOURCE")")/../repack.sh" --upstream-version "$upstreamVer" "${unprunedTarballPrefix}-libtrust.tar.gz"
 fi
+
+#if gocapabilityCommit="$(get_hack_vendor | grep -m1 '^clone git github.com/syndtr/gocapability ' | cut -d' ' -f4)" && [ "$gocapabilityCommit" ]; then
+if gocapabilityCommit="e55e5833692b49e49a0073ad5baf7803f21bebf4" && [ "$gocapabilityCommit" ]; then
+	$curl "https://github.com/syndtr/gocapability/archive/${gocapabilityCommit}.tar.gz" > "${unprunedTarballPrefix}-gocapability.tar.gz"
+
+	echo "successfully fetched ${unprunedTarballPrefix}-gocapability.tar.gz"
+	echo "  (from gocapability commit $gocapabilityCommit)"
+
+	"$(dirname "$(readlink -f "$BASH_SOURCE")")/../repack.sh" --upstream-version "$upstreamVer" "${unprunedTarballPrefix}-gocapability.tar.gz"
+fi

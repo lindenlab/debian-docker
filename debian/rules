@@ -8,6 +8,7 @@ export DH_GOLANG_INSTALL_ALL := 1
 
 LIBCONTAINER_GOPKG = github.com/docker/libcontainer
 LIBTRUST_GOPKG = github.com/docker/libtrust
+GOCAPABILITY_GOPKG = github.com/syndtr/gocapability
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 export GOPATH := $(CURDIR)/obj-$(DEB_BUILD_GNU_TYPE)
@@ -42,15 +43,18 @@ override_dh_auto_build:
 	@# this is especially for easier build-testing of nightlies
 	@[ -d libcontainer ] || { [ -d vendor/src/$(LIBCONTAINER_GOPKG) ] && ln -sf vendor/src/$(LIBCONTAINER_GOPKG) libcontainer; }
 	@[ -d libtrust ] || { [ -d vendor/src/$(LIBTRUST_GOPKG) ] && ln -sf vendor/src/$(LIBTRUST_GOPKG) libtrust; }
+	@[ -d gocapability ] || { [ -d vendor/src/$(GOCAPABILITY_GOPKG) ] && ln -sf vendor/src/$(GOCAPABILITY_GOPKG) gocapability; }
 	
 	@# we need to make sure our multitarball deps are in our GOPATH
-	@mkdir -p "$$GOPATH/src/$(dir $(LIBCONTAINER_GOPKG))" "$$GOPATH/src/$(dir $(LIBTRUST_GOPKG))"
+	@mkdir -p "$$GOPATH/src/$(dir $(LIBCONTAINER_GOPKG))" "$$GOPATH/src/$(dir $(LIBTRUST_GOPKG))" "$$GOPATH/src/$(dir $(GOCAPABILITY_GOPKG))" 
 	ln -sf "$$(readlink -f libcontainer)" "$(GOPATH)/src/$(dir $(LIBCONTAINER_GOPKG))"
 	ln -sf "$$(readlink -f libtrust)" "$(GOPATH)/src/$(dir $(LIBTRUST_GOPKG))"
+	rm -rf "$(GOPATH)/src/$(dir $(GOCAPABILITY_GOPKG))"
+	ln -sf "$$(readlink -f gocapability)" "$(GOPATH)/src/$(dir $(GOCAPABILITY_GOPKG))"
 	rm -rf "$(GOPATH)/src/github.com/docker/docker/autogen"
 	ln -sf "$(CURDIR)/autogen" "$(GOPATH)/src/github.com/docker/docker/autogen"
 	
-	./project/make.sh dynbinary
+	./hack/make.sh dynbinary
 	
 	# compile man pages
 	./docs/man/md2man-all.sh
@@ -112,7 +116,7 @@ override_dh_installudev:
 
 
 override_dh_auto_clean:
-	# bundles is created by project/make.sh
+	# bundles is created by hack/make.sh
 	# docs/man/man*/ is created by docs/man/md2man-all.sh
 	rm -rf bundles autogen docs/man/man*/
 
