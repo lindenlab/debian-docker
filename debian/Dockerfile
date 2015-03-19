@@ -18,9 +18,7 @@ RUN apt-get update && mk-build-deps -irt'apt-get --no-install-recommends -yV' de
 COPY . /usr/src/docker.io/debian
 
 # go download and unpack our upstream source
-RUN uscan --force-download --verbose --download-current-version
 RUN DOCKER_TARBALLS=.. ./debian/helpers/download-libcontainer
-RUN /tianon/extract-origtargz.sh
 
 # tianon is _really_ lazy, and likes a preseeded bash history
-RUN echo '/tianon/extract-origtargz.sh && dpkg-buildpackage -us -uc && lintian -EvIL+pedantic' >> /root/.bash_history
+RUN echo 'uscan --force-download --verbose --download-current-version  && /tianon/extract-origtargz.sh && dpkg-buildpackage -us -uc && lintian -EvIL+pedantic' >> /root/.bash_history
