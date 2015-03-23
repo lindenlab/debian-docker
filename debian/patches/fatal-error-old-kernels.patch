@@ -3,15 +3,14 @@ Forwarded: not-needed
 Author: Tianon Gravi <admwiggin@gmail.com>
 Reviewed-by: Paul Tagliamonte <paultag@debian.org>
 
-diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 632b9ab..5df7a54 100644
---- a/daemon/daemon.go
-+++ b/daemon/daemon.go
-@@ -1235,7 +1235,7 @@
+diff -Naur a/daemon/daemon.go b/daemon/daemon.go
+--- a/daemon/daemon.go	2015-03-23 22:28:56.275553882 +0000
++++ b/daemon/daemon.go	2015-03-23 22:31:43.611602735 +0000
+@@ -1219,7 +1219,7 @@
  	} else {
  		if kernel.CompareKernelVersion(k, &kernel.KernelVersionInfo{Kernel: 3, Major: 8, Minor: 0}) < 0 {
  			if os.Getenv("DOCKER_NOWARN_KERNEL_VERSION") == "" {
--				log.Warnf("You are running linux kernel version %s, which might be unstable running docker. Please upgrade your kernel to 3.8.0.", k.String())
+-				log.Infof("WARNING: You are running linux kernel version %s, which might be unstable running docker. Please upgrade your kernel to 3.8.0.", k.String())
 +				log.Errorf("You are running Linux kernel version %s, which is unsupported for running Docker. Please upgrade your kernel to 3.8+.", k.String())
  			}
  		}

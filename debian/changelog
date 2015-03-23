@@ -1,6 +1,6 @@
-docker.io (1.5.0~linden-6) UNRELEASED; urgency=low
+docker.io (1.5.0~linden-7) UNRELEASED; urgency=low
 
-  * Update to 1.5.0 linden build
+  * Update to 1.5.0 rc4 linden build
   * Patch: 9922-private-registry-search-401
   * Patch: gid-workaround
   * Patch: 8326-force-fully-qualified
@@ -9,7 +9,7 @@ docker.io (1.5.0~linden-6) UNRELEASED; urgency=low
   * Patch: Moving portspec lookups to daemon
   * Patch: Adding support for --publish-hostname
 
- -- Don Kjer <don@lindenlab.com>  Thu, 19 Mar 2015 07:31:57 +0000
+ -- Don Kjer <don@lindenlab.com>  Mon, 23 Mar 2015 22:16:28 +0000
 
 docker.io (1.5.0~dfsg1-1) UNRELEASED; urgency=low
 

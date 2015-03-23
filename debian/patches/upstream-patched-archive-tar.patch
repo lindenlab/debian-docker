@@ -11,8 +11,8 @@
  const (
 --- a/integration/api_test.go
 +++ b/integration/api_test.go
-@@ -19,7 +19,7 @@
- 	"github.com/docker/docker/builder"
+@@ -18,7 +18,7 @@
+ 	"github.com/docker/docker/api/server"
  	"github.com/docker/docker/engine"
  	"github.com/docker/docker/runconfig"
 -	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
@@ -33,10 +33,10 @@
  	"github.com/docker/docker/daemon"
 --- a/integration-cli/docker_api_containers_test.go
 +++ b/integration-cli/docker_api_containers_test.go
-@@ -10,7 +10,7 @@
+@@ -12,7 +12,7 @@
  	"time"
  
- 	"github.com/docker/docker/api/types"
+ 	"github.com/docker/docker/api/stats"
 -	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
  )
@@ -55,7 +55,7 @@
  // pulling an image from the central registry should work
 --- a/integration-cli/utils.go
 +++ b/integration-cli/utils.go
-@@ -17,7 +17,7 @@
+@@ -15,7 +15,7 @@
  	"syscall"
  	"time"
  
@@ -88,29 +88,29 @@
  func TestCmdStreamLargeStderr(t *testing.T) {
 --- a/pkg/archive/archive_unix.go
 +++ b/pkg/archive/archive_unix.go
-@@ -7,7 +7,7 @@
- 	"os"
+@@ -6,7 +6,7 @@
+ 	"errors"
  	"syscall"
  
 -	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
  )
  
- // canonicalTarNameForPath returns platform-specific filepath
+ func setHeaderForSpecialDevice(hdr *tar.Header, ta *tarAppender, name string, stat interface{}) (nlink uint32, inode uint64, err error) {
 --- a/pkg/archive/archive_windows.go
 +++ b/pkg/archive/archive_windows.go
-@@ -7,7 +7,7 @@
- 	"os"
- 	"strings"
+@@ -3,7 +3,7 @@
+ package archive
  
+ import (
 -	"github.com/docker/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
  )
  
- // canonicalTarNameForPath returns platform-specific filepath
+ func setHeaderForSpecialDevice(hdr *tar.Header, ta *tarAppender, name string, stat interface{}) (nlink uint32, inode uint64, err error) {
 --- a/pkg/archive/changes.go
 +++ b/pkg/archive/changes.go
-@@ -11,7 +11,7 @@
+@@ -10,7 +10,7 @@
  	"syscall"
  	"time"
  
