@@ -7,8 +7,16 @@ FROM registry.docker/build/debian-devel
 COPY control /usr/src/docker.io/debian/
 WORKDIR /usr/src/docker.io
 
+# grab sid dependencies and include experimental packages
+RUN APT_LINE=$(cat /etc/apt/sources.list | grep '^deb ' | grep 'jessie main') ; \
+    echo $APT_LINE | sed 's/jessie/sid/' >> /etc/apt/sources.list && \
+    cat /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get -t sid install golang-logrus-dev && \
+    sed -i 's/sid main/experimental main/' /etc/apt/sources.list
+
 # get all the build deps of _this_ package in a nice repeatable way
-RUN apt-get update && mk-build-deps -irt'apt-get --no-install-recommends -yV' debian/control && dpkg-checkbuilddeps
+RUN apt-get update && mk-build-deps -irt'apt-get -t experimental --no-install-recommends -yV' debian/control && dpkg-checkbuilddeps
 
 # need our debian/ directory to compile _this_ package
 COPY . /usr/src/docker.io/debian
