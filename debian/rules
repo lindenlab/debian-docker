@@ -6,6 +6,7 @@ DOCKER_GOPKG = github.com/docker/docker
 # MUST STAY IN SYNC WITH LIST IN "debian/helpers/download-libcontainer"
 MULTI_ORIG_GOPKGS = \
 	github.com/docker/libcontainer \
+	github.com/docker/libnetwork \
 	github.com/docker/libtrust \
 	github.com/docker/distribution
 
