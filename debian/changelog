@@ -1,3 +1,9 @@
+docker.io (1.6.0~linden2) experimental; urgency=medium
+
+  * Adding custom-host-port-ranges patch
+
+ -- Don Kjer <don@lindenlab.com>  Sat, 02 May 2015 01:32:06 +0000
+
 docker.io (1.6.0~linden1) experimental; urgency=medium
 
   * Update to 1.6.0 rc7 linden build
