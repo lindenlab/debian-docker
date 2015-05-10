@@ -7,8 +7,6 @@ all:
 
 listpackages:
 	@dh_listpackages
-	@echo golang-logrus-dev
-	@echo golang-fsnotify-dev
 
 mangle:
 
