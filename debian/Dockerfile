@@ -11,7 +11,7 @@ RUN APT_LINE=$(cat /etc/apt/sources.list | grep '^deb ' | grep 'jessie main') ; 
     echo $APT_LINE | sed 's/jessie/sid/' >> /etc/apt/sources.list && \
     cat /etc/apt/sources.list && \
     apt-get update && \
-    apt-get -t sid install golang-logrus-dev && \
+    apt-get -y -t sid install golang-logrus-dev golang-dbus-dev golang-gocapability-dev golang-fsnotify-dev && \
     sed -i 's/sid main/experimental main/' /etc/apt/sources.list
 
 # get all the build deps of _this_ package in a nice repeatable way
