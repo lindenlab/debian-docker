@@ -1,3 +1,9 @@
+docker.io (1.6.0~linden3) experimental; urgency=medium
+
+  * Adding pull-single-tag-v1.6 patch
+
+ -- Don Kjer <don@lindenlab.com>  Wed, 10 Jun 2015 22:21:01 +0000
+
 docker.io (1.6.0~linden2) experimental; urgency=medium
 
   * Adding custom-host-port-ranges patch
