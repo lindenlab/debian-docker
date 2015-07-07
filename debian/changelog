@@ -1,3 +1,9 @@
+docker.io (1.7.1~linden1) unstable; urgency=medium
+
+  * Updating to 1.7.1-rc1
+
+ -- Don Kjer <don@lindenlab.com>  Tue, 07 Jul 2015 21:47:56 +0000
+
 docker.io (1.6.2~dfsg1-2) unstable; urgency=medium
 
   * Add DEP8 tests
