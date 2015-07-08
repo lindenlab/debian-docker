@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
 		build-essential \
 		devscripts \
 		dh-make \
+		dh-systemd \
 		dput-ng \
 		equivs \
 		git bzr mercurial subversion \
