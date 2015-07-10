@@ -1,3 +1,9 @@
+docker.io (1.7.1~linden2) unstable; urgency=medium
+
+  * Applying single-tag pull patch.
+
+ -- Don Kjer <don@lindenlab.com>  Fri, 10 Jul 2015 01:21:13 +0000
+
 docker.io (1.7.1~linden1) unstable; urgency=medium
 
   * Updating to 1.7.1-rc1
