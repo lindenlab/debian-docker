@@ -1,11 +1,5 @@
 cgroupfs-mount-convenience-copy.patch
 
-# https://github.com/docker/docker/pull/12048! (1.7+)
-12048-auto-btrfs_noversion.patch
-
-# https://github.com/docker/docker/pull/12943 (1.7+)
-12943-newer-go-patricia.patch
-
 # https://github.com/docker/docker/pull/13745 (1.7+)
 13745-fix-kr-pty-import-path.patch
 
@@ -22,3 +16,5 @@ fatal-error-old-kernels.patch
 # Once upstream adds EnvFile, remove this patch.
 change-system-unit-env-file.patch
 # See also https://github.com/docker/docker/pull/7220#issuecomment-50076589
+#
+linden-vendoring.patch
