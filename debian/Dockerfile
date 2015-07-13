@@ -37,4 +37,5 @@ COPY . /usr/src/docker.io/debian
 RUN echo 'uscan --force-download --verbose --download-current-version && \
     DOCKER_TARBALLS=.. ./debian/helpers/download-libcontainer && \
     /tianon/extract-origtargz.sh && \
+    quilt push -a && \
     dpkg-buildpackage -us -uc && lintian -EvIL+pedantic' >> /root/.bash_history
