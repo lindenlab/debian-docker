@@ -7,7 +7,7 @@ Index: docker.io/contrib/init/sysvinit-debian/docker
 ===================================================================
 --- docker.io.orig/contrib/init/sysvinit-debian/docker
 +++ docker.io/contrib/init/sysvinit-debian/docker
-@@ -58,35 +58,10 @@ fail_unless_root() {
+@@ -59,37 +59,12 @@
  	fi
  }
  
@@ -36,6 +36,8 @@ Index: docker.io/contrib/init/sysvinit-debian/docker
 -
  case "$1" in
  	start)
+ 		check_init
+ 		
  		fail_unless_root
  
 -		cgroupfs_mount
@@ -47,7 +49,7 @@ Index: docker.io/contrib/init/upstart/docker.conf
 ===================================================================
 --- docker.io.orig/contrib/init/upstart/docker.conf
 +++ docker.io/contrib/init/upstart/docker.conf
-@@ -9,29 +9,6 @@ respawn
+@@ -9,29 +9,6 @@
  
  kill timeout 20
  

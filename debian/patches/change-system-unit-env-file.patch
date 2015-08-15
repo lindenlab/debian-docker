@@ -8,11 +8,11 @@ diff --git a/contrib/init/systemd/docker.service b/contrib/init/systemd/docker.s
 index 0cb31e3..240961c 100644
 --- a/contrib/init/systemd/docker.service
 +++ b/contrib/init/systemd/docker.service
-@@ -5,7 +5,8 @@ After=network.target docker.socket
- Requires=docker.socket
+@@ -6,7 +6,8 @@
  
  [Service]
--ExecStart=/usr/bin/docker -d -H fd://
+ Type=notify
+-ExecStart=/usr/bin/docker daemon -H fd://
 +EnvironmentFile=-/etc/default/docker
 +ExecStart=/usr/bin/docker -d $DOCKER_OPTS
  MountFlags=slave

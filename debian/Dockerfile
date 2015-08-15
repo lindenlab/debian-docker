@@ -23,8 +23,10 @@ RUN APT_LINE=$(cat /etc/apt/sources.list | grep '^deb ' | grep 'jessie main') ; 
         golang-go-systemd-dev \
         golang-go.net-dev \
         golang-gosqlite-dev \
-        golang-mux-dev \
-        golang-pty-dev && \
+        golang-pty-dev \
+        golang-go-zfs-dev \
+        libapparmor-dev \
+        libdevmapper-dev && \
     sed -i 's/sid main/experimental main/' /etc/apt/sources.list
 
 # get all the build deps of _this_ package in a nice repeatable way

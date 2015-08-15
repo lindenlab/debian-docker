@@ -5,20 +5,39 @@ DOCKER_GOPKG = github.com/docker/docker
 
 # MUST STAY IN SYNC WITH LIST IN "debian/helpers/download-libcontainer"
 MULTI_ORIG_GOPKGS = \
-	github.com/docker/libcontainer \
+	github.com/opencontainers/runc \
 	github.com/docker/libnetwork \
 	github.com/docker/libtrust \
 	github.com/docker/libnetwork \
 	github.com/vishvananda/netns \
 	github.com/vishvananda/netlink \
 	github.com/mistifyio/go-zfs \
-	github.com/docker/distribution
+	github.com/docker/distribution \
+	github.com/gorilla/mux \
+	github.com/BurntSushi/toml \
+	github.com/Graylog2/go-gelf \
+	github.com/docker/libkv \
+	github.com/docker/notary \
+	github.com/endophage/gotuf \
+	github.com/fluent/fluent-logger-golang \
+	github.com/hashicorp/serf \
+	github.com/vbatts/tar-split \
+	github.com/agl/ed25519 \
+	github.com/armon/go-metrics \
+	github.com/coreos/go-etcd \
+	github.com/hashicorp/consul \
+	github.com/hashicorp/go-msgpack \
+	github.com/hashicorp/memberlist \
+	github.com/samuel/go-zookeeper \
+	github.com/tent/canonical-json-go \
+	github.com/tinylib/msgp \
+	github.com/philhofer/fwd \
 
 # the list of Go packages to include in golang-docker-dev
 DEV_GOPKGS = \
 	github.com/docker/docker/autogen/dockerversion \
 	github.com/docker/docker/pkg \
-	github.com/docker/libcontainer \
+	github.com/opencontainers/runc \
 	github.com/docker/libnetwork
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)

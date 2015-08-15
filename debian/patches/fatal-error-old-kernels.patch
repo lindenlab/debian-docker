@@ -3,11 +3,11 @@ Forwarded: not-needed
 Author: Tianon Gravi <admwiggin@gmail.com>
 Reviewed-by: Paul Tagliamonte <paultag@debian.org>
 
-diff --git a/daemon/daemon.go b/daemon/daemon.go
+diff --git a/daemon/daemon_unix.go b/daemon/daemon_unix.go
 index 6a27a08..eb366a1 100644
---- a/daemon/daemon.go
-+++ b/daemon/daemon.go
-@@ -1257,7 +1257,7 @@ func checkKernel() error {
+--- a/daemon/daemon_unix.go
++++ b/daemon/daemon_unix.go
+@@ -110,7 +110,7 @@
  	} else {
  		if kernel.CompareKernelVersion(k, &kernel.KernelVersionInfo{Kernel: 3, Major: 10, Minor: 0}) < 0 {
  			if os.Getenv("DOCKER_NOWARN_KERNEL_VERSION") == "" {
