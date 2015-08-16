@@ -7,6 +7,8 @@ all:
 
 listpackages:
 	@dh_listpackages
+	@echo dmsetup
+	@echo libdevmapper1.02.1
 
 mangle:
 
@@ -23,6 +25,7 @@ deb: dockerbuild
 		quilt push -a && \
 		dpkg-buildpackage -us -uc -b && \
 		mv ../*.deb /packages && chown $(UID):$(GID) /packages/*"
+	cp deps/* packages
 
 clean:
 	rm -f packages/*
