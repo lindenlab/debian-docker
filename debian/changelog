@@ -1,3 +1,9 @@
+docker.io (1.8.2~linden1) unstable; urgency=medium
+
+  * Updating to 1.8.2-rc1
+
+ -- Don Kjer <don@lindenlab.com>  Fri, 11 Sep 2015 19:19:39 +0000
+
 docker.io (1.8.1~linden1) unstable; urgency=medium
 
   * Updating to 1.8.1
