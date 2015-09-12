@@ -1,3 +1,9 @@
+docker.io (1.8.2~linden2) unstable; urgency=medium
+
+  * Enabling content trust by default.  Pinging registry to obtain trust server location
+
+ -- Don Kjer <don@lindenlab.com>  Sat, 12 Sep 2015 06:22:31 +0000
+
 docker.io (1.8.2~linden1) unstable; urgency=medium
 
   * Updating to 1.8.2-rc1
