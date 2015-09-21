@@ -1,3 +1,9 @@
+docker.io (1.8.2~linden3) unstable; urgency=medium
+
+  * Updating notary/tuf libraries.  Disable content trust on create/run
+
+ -- Don Kjer <don@lindenlab.com>  Mon, 21 Sep 2015 22:10:43 +0000
+
 docker.io (1.8.2~linden2) unstable; urgency=medium
 
   * Enabling content trust by default.  Pinging registry to obtain trust server location
