@@ -29,7 +29,7 @@ multiOrigGopkgs=(
 	github.com/hashicorp/go-msgpack
 	github.com/hashicorp/memberlist
 	github.com/samuel/go-zookeeper
-	github.com/tent/canonical-json-go
+	github.com/jfrazelle/go
 	github.com/tinylib/msgp
 	github.com/philhofer/fwd
 )
