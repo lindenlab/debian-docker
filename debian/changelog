@@ -1,3 +1,9 @@
+docker.io (1.8.2~mac1) UNRELEASED; urgency=medium
+
+  * Changing to 1.8.2~mac1
+
+ -- Mac Linden <mac@lindenlab.com>  Thu, 24 Sep 2015 23:53:11 +0000
+
 docker.io (1.8.2~linden3) unstable; urgency=medium
 
   * Updating notary/tuf libraries.  Disable content trust on create/run
