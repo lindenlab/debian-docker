@@ -31,15 +31,15 @@ cat "$dir"/debian/repack/prune/* | while read file; do
 done
 
 dfsgfilename="$filename"
-if [[ "$dfsgfilename" != *linden* ]]; then
+if [[ "$dfsgfilename" != *mac* ]]; then
 	pkg="$(dpkg-parsechangelog -l"$dir"/debian/changelog -SSource)"
 	ver="$(dpkg-parsechangelog -l"$dir"/debian/changelog -SVersion)"
 	origVer="${ver%-*}" # strip everything from the last dash
 	origVer="$(echo "$origVer" | sed -r 's/^[0-9]+://')" # strip epoch
-	upstreamVer="${origVer%%[+~]linden*}"
-	lindenBits="${origVer#$upstreamVer}"
+	upstreamVer="${origVer%%[+~]mac*}"
+	macBits="${origVer#$upstreamVer}"
 	
-	dfsgfilename="${lindenfilename/.orig/$lindenBits.orig}"
+	dfsgfilename="${macfilename/.orig/$macBits.orig}"
 fi
 tar -czf ${dir}/${dfsgfilename} *
 cd "$dir"
