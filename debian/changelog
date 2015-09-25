@@ -1,3 +1,9 @@
+docker.io (1.8.2~linden4) unstable; urgency=medium
+
+  * Enabling trust on 'docker run', but only for pull fallback case.
+
+ -- Don Kjer <don@lindenlab.com>  Fri, 25 Sep 2015 23:36:55 +0000
+
 docker.io (1.8.2~linden3) unstable; urgency=medium
 
   * Updating notary/tuf libraries.  Disable content trust on create/run
