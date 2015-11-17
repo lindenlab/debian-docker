@@ -1,4 +1,4 @@
-FROM registry.docker/build/debian-devel
+FROM registry.docker/build/debian-devel:go-1.4
 
 #RUN echo 'deb http://incoming.debian.org/debian-buildd buildd-unstable main contrib non-free' > /etc/apt/sources.list.d/incoming.list
 
@@ -11,7 +11,7 @@ RUN APT_LINE=$(cat /etc/apt/sources.list | grep '^deb ' | grep 'jessie main') ; 
     echo $APT_LINE | sed 's/jessie/sid/' >> /etc/apt/sources.list && \
     cat /etc/apt/sources.list && \
     apt-get update && \
-    apt-get -y -t sid install golang \
+    apt-get -y -t sid install \
         golang-goprotobuf-dev \
         golang-go-patricia-dev \
         golang-logrus-dev \
