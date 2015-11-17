@@ -15,7 +15,10 @@ mangle:
 dockerdev:
 	docker build -f debian/Dockerfile.devel -t registry.docker/build/debian-devel debian
 
-dockerbuild: dockerdev
+gobuild: dockerdev
+	docker build -t registry.docker/build/debian-devel:go-1.4 go-1.4
+
+dockerbuild: gobuild
 	docker build -t registry.docker/build/debian-docker debian
 
 deb: dockerbuild
